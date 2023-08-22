@@ -95,12 +95,20 @@ function showUsers(){
 }
 
 function clearInputs(){
-    document.getElementById("name").value = "";
-   document.getElementById("email").value = "";
-   document.getElementById("birthdate").value = "";
-   city = document.getElementById("address").value = "";
-   phone = document.getElementById("phone").value = "";
-   cpf = document.getElementById("cpf").value = "";
+ document.getElementById("name").value = "";
+ document.getElementById("email").value = "";
+ document.getElementById("birthdate").value = "";
+ document.getElementById("address").value = "";
+ document.getElementById("phone").value = "";
+ document.getElementById("cpf").value = "";
+}
+
+function isAnyInputEmpty(){
+    if (name || email || birthdate || city || phone || cpf){
+        sendErrorMsg();
+    } else{
+        sendSuccessMsg();
+    }
 }
 
 function formatedCPF(cpf) {
@@ -158,6 +166,9 @@ function valida_cpf(cpf) {
     else
         return false;
 }
+
+
+const msg = "";
 
 function sendErrorMsg(msg) {
     console.log("Passou pela funcao sendErrorMsg()");
