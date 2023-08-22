@@ -11,6 +11,14 @@ class User{
 
     }
 }
+function createUser(User){
+   const name = document.getElementById("name").value;
+   const email = document.getElementById("email").value;
+   const birthdate = document.getElementById("birthdate").value;
+   const city = document.getElementById("address").value;
+   const phone = document.getElementById("phone").value;
+   const cpf = document.getElementById("cpf").value;
+}
 getZodiacSign() {
     let birthdate = new Date(this.birthdate);
     let day = birthdate.getDate();
