@@ -1,12 +1,11 @@
 class User{
-    constructor(name, email, birthdate, city, phone, cpf, zodiacSign , status){
+    constructor(name, email, birthdate, city, phone, cpf, status){
         this.name = name;
         this.email = email;
         this.birthdate = birthdate;
         this.city = city;
         this.phone = phone;
         this.cpf = cpf;
-        this.zodiacSign = zodiacSign;
         this.status = status;
     }
 }
@@ -53,6 +52,7 @@ class ListUser{
     }
 }
 
+const listUser = new ListUser();
 
 function createUser(){
     console.log("entrou createUser")
@@ -63,9 +63,15 @@ function createUser(){
    const city = document.getElementById("address").value;
    const phone = document.getElementById("phone").value;
    const cpf = document.getElementById("cpf").value;
-
+   const status = false; /* vai retornar false para reprensentar nao registrado */
+//
    console.log(`hello ${name}, your email is ${email}, your birthdate is ${birthdate},
    you live in ${city}, your phone number is ${phone}, your cpf is ${cpf}`)
+   //
+   const user = new User (name, email, birthdate, city, phone, cpf, status);
+   listUser.addUser(user);
+
+   console.log(user);
 }
 
 
