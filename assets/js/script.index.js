@@ -70,9 +70,8 @@ function createUser(){
    listUser.addUser(user);
 
    console.log(user);
+   clearInputs();
 }
-
-
 
 function showRegister() {
     document.getElementById("sub-div").classList.add("hidden");
@@ -86,6 +85,15 @@ function showUsers(){
     document.getElementById("main-div").classList.add("hidden");
     document.getElementById("title-page").classList.add("hidden");
     document.getElementById("sub-div").classList.remove("hidden");
+}
+
+function clearInputs(){
+    document.getElementById("name").value = "";
+   document.getElementById("email").value = "";
+   document.getElementById("birthdate").value = "";
+   city = document.getElementById("address").value = "";
+   phone = document.getElementById("phone").value = "";
+   cpf = document.getElementById("cpf").value = "";
 }
 
 function formatedCPF(cpf) {
