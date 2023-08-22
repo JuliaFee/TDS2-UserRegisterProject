@@ -147,13 +147,15 @@ h2 {
 
 #user-list {
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 60%;
     flex-direction: column;
     flex-wrap: nowrap;
-    align-content: center;
+    text-align: left;
     margin-top: 100px;
+    background-color: #D9D9D9;
+    color: black;
+    padding: 15px;
+    border-radius: 6px;
 }
 
 #main-sub-div {

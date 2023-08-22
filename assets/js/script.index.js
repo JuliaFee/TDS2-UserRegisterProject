@@ -73,11 +73,17 @@ function createUser(){
    const phone = document.getElementById("phone").value;
    const cpf = document.getElementById("cpf").value;
    const status = false; /* vai retornar false para reprensentar nao registrado */
+
+//    formatedCellphone();
+//    formatedCPF();
+//    valida_cpf();
+
    const user = new User (name, email, birthdate, city, phone, cpf, status);
    listUser.addUser(user);
 
    console.log(user);
    clearInputs();
+   isAnyInputEmpty();
 }
 
 function showRegister() {
@@ -92,6 +98,27 @@ function showUsers(){
     document.getElementById("main-div").classList.add("hidden");
     document.getElementById("title-page").classList.add("hidden");
     document.getElementById("sub-div").classList.remove("hidden");
+
+    let html = "";
+
+    users.forEach(user =>{
+       html += ` <p><b>Nome:</b>banna</p>
+                <p><b>Idade:</b>banna</p>
+                <p><b>Signo:</b>banna</p>
+                <p><b>E-mail:</b>banna</p>
+                <p><b>Data de nascimento:</b>banna</p>
+                <p><b>Cidade:</b>banna</p>
+                <p><b>Telefone:</b>banna</p>
+                <p><b>CPF:</b>banna</p>
+                <p><b>Possível cliente?:</b>banna</p>
+                <style>
+                #user-list{
+                    background-color: #D9D9D9;
+                }
+                </style>
+                `
+
+    })
 }
 
 function clearInputs(){
@@ -101,14 +128,6 @@ function clearInputs(){
  document.getElementById("address").value = "";
  document.getElementById("phone").value = "";
  document.getElementById("cpf").value = "";
-}
-
-function isAnyInputEmpty(){
-    if (name || email || birthdate || city || phone || cpf){
-        sendErrorMsg();
-    } else{
-        sendSuccessMsg();
-    }
 }
 
 function formatedCPF(cpf) {
@@ -167,6 +186,13 @@ function valida_cpf(cpf) {
         return false;
 }
 
+function isAnyInputEmpty(){
+    if (name || email || birthdate || city || phone || cpf){
+        sendErrorMsg();
+    } else{
+        sendSuccessMsg();
+    }
+}
 
 const msg = "";
 
