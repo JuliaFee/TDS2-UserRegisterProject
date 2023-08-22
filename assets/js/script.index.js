@@ -3,6 +3,7 @@ class User{
         this.name = name;
         this.email = email;
         this.birthdate = birthdate.split('-').reverse().join('/');
+        this.age = this.caculateAge();
         this.city = city;
         this.phone = phone;
         this.cpf = cpf;
@@ -42,6 +43,12 @@ class User{
         } else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
             this.sign = "Sagitário ♐";
         }
+    }
+
+    caculateAge(){
+        let date = new Date(2023);
+
+        console.log(date - this.birthdate)
     }
 }
 
@@ -106,10 +113,10 @@ function formatedCPF(cpf) {
     return cpfFormated;
 }
 
-function formatedCellphone(cellphone) {
+function formatedCellphone(phone) {
     console.log("Passou pela funcao formatedCellphone()");
 
-    let cellphoneArray = cellphone.split("");
+    let cellphoneArray = phone.split("");
     let cellphoneFormated = "(" + cellphoneArray[0] + cellphoneArray[1] + ")"
         + " " + cellphoneArray[2] + cellphoneArray[3] + cellphoneArray[4]
         + cellphoneArray[5] + cellphoneArray[6] + "-"
@@ -159,6 +166,15 @@ function sendErrorMsg(msg) {
     document.getElementById("error-msg").classList.remove("hidden");
     setTimeout(function () {
         document.getElementById("error-msg").classList.add("hidden");
+    }, 4000);
+}
+function sendSuccessMsg(msg) {
+    console.log("Passou pela funcao sendSucessMsg()");
+
+    document.getElementById("success-msg").innerHTML = msg;
+    document.getElementById("success-msg").classList.remove("hidden");
+    setTimeout(function () {
+        document.getElementById("success-msg").classList.add("hidden");
     }, 4000);
 }
 
