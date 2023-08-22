@@ -11,16 +11,20 @@ class User{
 
     }
 }
-function createUser(User){
+function createUser(){
    const name = document.getElementById("name").value;
    const email = document.getElementById("email").value;
    const birthdate = document.getElementById("birthdate").value;
    const city = document.getElementById("address").value;
    const phone = document.getElementById("phone").value;
    const cpf = document.getElementById("cpf").value;
+
+   console.log(`hello ${name}, your email is ${email}, your birthdate is ${birthdate},
+   you live in ${city}, your phone number is ${phone}, your cpf is ${cpf}`)
 }
+/*
 getZodiacSign() {
-    let birthdate = new Date(this.birthdate);
+    birthdate = new Date(this.birthdate);
     let day = birthdate.getDate();
     let month = birthdate.getMonth() + 1;
     console.log("Passou pelo getSigno() da class User");
@@ -132,3 +136,4 @@ function sendErrorMsg(msg) {
 // how many classes are there? 2
 
 // Boa sorte!
+/*/
