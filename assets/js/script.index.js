@@ -1,4 +1,16 @@
+class User{
+    constructor(name, email, birthdate, city, phone, cpf, zodiacSign , status){
+        this.name = name;
+        this.email = email;
+        this.birthdate = birthdate;
+        this.city = city;
+        this.phone = phone;
+        this.cpf = cpf;
+        this.zodiacSign = zodiacSign;
+        this.status = status;
 
+    }
+}
 getZodiacSign() {
     let birthdate = new Date(this.birthdate);
     let day = birthdate.getDate();
