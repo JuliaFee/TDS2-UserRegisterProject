@@ -2,7 +2,7 @@ class User{
     constructor(name, email, birthdate, city, phone, cpf, status){
         this.name = name;
         this.email = email;
-        this.birthdate = birthdate.split('-').reverse().join('/');
+        this.birthdate = birthdate;
         this.age = this.caculateAge();
         this.city = city;
         this.phone = phone;
@@ -11,6 +11,9 @@ class User{
         this.sign = this.getZodiacSign();
     }
 
+    getAge(birthdate){
+        return new Date().getFullYear() - birthdate;
+    }
     
     getZodiacSign() {
         let birthdate = new Date(this.birthdate);
