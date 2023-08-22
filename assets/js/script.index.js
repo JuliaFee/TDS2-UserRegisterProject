@@ -3,20 +3,24 @@ class User{
         this.name = name;
         this.email = email;
         this.birthdate = birthdate;
-        this.age = this.caculateAge();
+        this.age = this.getAge(birthdate);
         this.city = city;
         this.phone = phone;
         this.cpf = cpf;
         this.status = status;
-        this.sign = this.getZodiacSign();
+        this.sign = this.getZodiacSign(birthdate);
     }
 
     getAge(birthdate){
-        return new Date().getFullYear() - birthdate;
+        // Data do usuário
+        const dataFormatadaJS = new Date(birthdate);
+        const dataAno = dataFormatadaJS.getFullYear();
+        const dataHoje = new Date(2023);
+        console.log( dataHoje - dataAno );
     }
     
-    getZodiacSign() {
-        let birthdate = new Date(this.birthdate);
+    getZodiacSign(birthdate) {
+        this.birthdate = new Date(this.birthdate);
         let day = birthdate.getDate();
         let month = birthdate.getMonth() + 1;
         console.log("Passou pelo getSigno() da class User");
@@ -48,10 +52,9 @@ class User{
         }
     }
 
-    caculateAge(){
-        let date = new Date(2023);
-
-        console.log(date - this.birthdate)
+    getUsers(user){
+        return users.length;
+        console.log(users.length);
     }
 }
 
@@ -60,8 +63,18 @@ class ListUser{
         this.users = [];
     }
     addUser(user){
+
+        if(isAnyInputEmpty()){
+        sendErrorMsg("Preencha todos os campos");
+        } else if(!valida_cpf(user.cpf)){
+            sendErrorMsg("CPF Inválido!")
+        } else if(isCPFRegisted(user.cpf)){
+            sendErrorMsg("CPF já registrado")
+        } else{
+            sendSuccessMsg("Parabéns, você entrou na lista de espera!")
         this.users.push(user);
     }
+}
     
 }
 
@@ -76,10 +89,6 @@ function createUser(){
    const phone = document.getElementById("phone").value;
    const cpf = document.getElementById("cpf").value;
    const status = false; /* vai retornar false para reprensentar nao registrado */
-
-//    formatedCellphone();
-//    formatedCPF();
-//    valida_cpf();
 
    const user = new User (name, email, birthdate, city, phone, cpf, status);
    listUser.addUser(user);
@@ -189,7 +198,25 @@ function valida_cpf(cpf) {
         return false;
 }
 
+function isCPFRegisted(cpf){
+    console.log("passou na iscpfregisted");
+
+    if (User.cpf == cpf){
+        return true
+    } else{
+        return false
+    }
+    
+}
+
 function isAnyInputEmpty(){
+    const name = null_or_empty("name");
+   const email = null_or_empty("email");
+   const birthdate = null_or_empty("birthdate");
+   const city = null_or_empty("address");
+   const phone = null_or_empty("phone");
+   const cpf = null_or_empty("cpf");
+
     if (name || email || birthdate || city || phone || cpf){
         sendErrorMsg();
     } else{
