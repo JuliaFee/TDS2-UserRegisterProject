@@ -59,6 +59,11 @@ class User {
   getUsers(user) {
     return users.length;
   }
+//   getDate(birthdate){
+//     let date = new date (birthdate);
+//     let brDate = date.split('-').reverse().join('/');
+//     return brDate
+//   }
 }
 
 class ListUser {
@@ -66,14 +71,14 @@ class ListUser {
     this.users = [];
   }
   addUser(user) {
-    if (isAnyInputEmpty()) {
-      sendErrorMsg("Preencha todos os campos");
-    } else if (!valida_cpf(user.cpf)) {
+    // if (isAnyInputEmpty()) {
+    //   sendErrorMsg("Preencha todos os campos");
+     if (!valida_cpf(user.cpf)) {
       sendErrorMsg("CPF Inválido!");
     } else if (isCPFRegisted(cpf)) {
       sendErrorMsg("CPF já registrado");
     } else if (!isUserAPossibleClient(user)){
-        return user.status = "Não"
+        return user.status = true;
     }
     else {
       sendSuccessMsg("Parabéns, você entrou na lista de espera!");
@@ -92,14 +97,15 @@ function createUser() {
   const city = document.getElementById("address").value;
   const phone = document.getElementById("phone").value;
   const cpf = document.getElementById("cpf").value;
-  const status = false; /* vai retornar false para reprensentar nao registrado */
+  const status = false;
+/* vai retornar false para reprensentar nao registrado */
 
   const user = new User(name, email, birthdate, city, phone, cpf, status);
   listUser.addUser(user);
 
   console.log(user);
   clearInputs();
-  isAnyInputEmpty();
+//   isAnyInputEmpty();
 }
 function isUserAPossibleClient(user) {
   if (user.age < 18 && user.age > 31) {
@@ -115,6 +121,7 @@ function showRegister() {
   console.log("Passou pela funcao showRegister()");
 }
 
+
 function showUsers() {
   console.log("entrou pela funcao showUsers");
   document.getElementById("main-div").classList.add("hidden");
@@ -124,7 +131,7 @@ function showUsers() {
   let html = "";
 
   listUser.users.forEach((user) => {
-    html += ` 
+    html += `<div id="div-space"> 
 
        <p><b>Nome:</b>${user.name}</p>
                 <p><b>Idade:</b>${user.age}</p>
@@ -136,10 +143,11 @@ function showUsers() {
                 <p><b>CPF:</b>${user.cpf}</p>
                 <p><b>Possível cliente?:</b>${user.status}</p>
                 <style>
-                #user-list{
+                #div-space{
                     background-color: #D9D9D9;
                 }
                 </style>
+                </div>
                 `;
   });
   document.getElementById("user-list").innerHTML = html;
@@ -235,11 +243,18 @@ function isCPFRegisted(cpf) {
   }
 }
 
-function isAnyInputEmpty() {
-  if (name || email || birthdate || city || phone || cpf) {
-    return sendErrorMsg("Preencha os campos");
-  }
-}
+// function isAnyInputEmpty() {
+//     const name = document.getElementById("name").value;
+//   const email = document.getElementById("email").value;
+//   const birthdate = document.getElementById("birthdate").value;
+//   const city = document.getElementById("address").value;
+//   const phone = document.getElementById("phone").value;
+//   const cpf = document.getElementById("cpf").value;
+
+//   if (name == ""|| email == ""|| birthdate == ""|| city == ""|| phone == ""|| cpf == "") {
+//     return sendErrorMsg("Preencha os campos");
+//   }
+// }
 
 const msg = "";
 
